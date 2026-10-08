@@ -26,5 +26,7 @@ jobs:
           node --check docs/scripts/math.js
           node --check docs/scripts/lessons.js
           node --check docs/scripts/lessons-math.js
+          node --check docs/scripts/graph-math.js
+          node --check docs/scripts/graph-lab.js
       - name: Test mathematics and website links
         run: node --test

@@ -96,3 +96,20 @@ test('research notes keep publication status, limitations, dates and primary sou
     assert.ok(html.includes('May 12, 2026'));
     assert.ok(html.includes('almost all'));
 });
+
+test('graph lab exposes plain-language onboarding, keyboard alternatives, game controls and script dependencies', () => {
+    const html = documents.get('playground.html');
+    assert.ok(html.includes('Think of this as a map of numbers'));
+    assert.ok(html.includes('Show me: 6 connects to 12'));
+    for (const id of ['graphCanvas', 'graphNodeList', 'graphConnections', 'graphGameObjective', 'graphGameFeedback', 'graphPauseGame', 'graphEndGame']) {
+        assert.ok(html.includes(`id="${id}"`), `Missing ${id}`);
+    }
+    for (const id of ['graphLimit', 'graphRelation', 'graphLayout', 'graphNeighborhood', 'graphGameMode', 'graphTimer', 'graphNodeInput']) {
+        assert.ok(html.includes(`for="${id}"`), `Unlabeled control ${id}`);
+    }
+    assert.ok(html.indexOf('scripts/math.js') < html.indexOf('scripts/graph-math.js'));
+    assert.ok(html.indexOf('scripts/graph-math.js') < html.indexOf('scripts/graph-lab.js'));
+    assert.match(html, /id="graphGameFeedback"[^>]+role="status"/);
+    assert.ok(html.includes('Untimed · learn at your pace'));
+    assert.ok(html.includes('href="assets/css/graph-lab.css"'));
+});

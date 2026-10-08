@@ -11,6 +11,9 @@ for local setup, test commands, deployment, and the curriculum.
 - JavaScript belongs in `docs/scripts/`. `math.js` is the exact analyzer engine;
   `lessons-math.js` contains bounded, pure teaching calculations. Keep DOM work in
   `app.js` and `lessons.js`, not in the math modules.
+- `graph-math.js` owns bounded graph relationships and immutable game rules;
+  `graph-lab.js` owns the SVG workspace, controls, and timer lifecycle. Keep
+  graph-only styles in `docs/assets/css/graph-lab.css`.
 - Keep tests in `tests/` and GitHub configuration in `.github/`.
 - This is a dependency-free static site, not a framework application. Preserve
   relative URLs and direct-file compatibility. Serve `docs/`, not the repository
@@ -42,6 +45,9 @@ for local setup, test commands, deployment, and the curriculum.
 
 - Start with intuition, give a worked example, then offer optional deeper notes.
   Define new notation and state hypotheses. Link related levels and experiments.
+- Make activities understandable without specialist vocabulary: show an example,
+  invite one action, then explain its result. Mistakes should teach a reason.
+  Default to untimed practice; never require speed, dragging, or color recognition.
 - Date record snapshots and research notes. Prefer original papers, journal
   pages, project announcements, and standards bodies over news summaries.
 - For research updates record authors, date, publication/preprint status,
@@ -63,6 +69,9 @@ for local setup, test commands, deployment, and the curriculum.
   Hide stale results on invalid input, not a success-shaped fallback.
 - Preserve keyboard controls, visible focus, reduced-motion support, and live
   status announcements. Avoid page-level horizontal overflow at 320px.
+- For games, test win/loss, pause/resume, expiry, restart, hidden-tab behavior,
+  duplicate moves and scoring. Hide answer-revealing graph features during prime
+  hunts; stop scoring after a round ends. Do not persist scores without a reason.
 
 ## Validation and publishing
 

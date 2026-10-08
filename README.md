@@ -15,7 +15,7 @@ step, package installation, or backend is required.
 | [Applications](docs/applications.html) | Teaching-only RSA, finite fields, QR codes, computing, post-quantum standards |
 | [Visual atlas](docs/visuals.html) | Prime density, sliding windows, Ulam spirals, and Goldbach pairs |
 | [Research desk](docs/research.html) | Sourced 2024–2026 findings, ongoing research, limitations, and paper-reading guidance |
-| [Playground](docs/playground.html) | Animated sieve, exact divisor analysis, and neighboring primes |
+| [Playground](docs/playground.html) | Graph explorer, three learning games, animated sieve, exact divisors and neighboring primes |
 | [Resources](docs/resources.html) | Searchable topic map, glossary, study paths, and primary sources |
 
 ## Repository structure
@@ -30,6 +30,8 @@ docs/                    All HTML pages; deploy and serve this directory
     app.js               Navigation, tabs, directory, sieve, analyzer UI
     lessons-math.js      Pure, bounded calculations for teaching experiments
     lessons.js           SVG/DOM renderers and controls for those experiments
+    graph-math.js        Pure graph construction, pathfinding and challenge rules
+    graph-lab.js         Graph workspace, dragging, inspection and game lifecycle
 tests/                   Dependency-free Node.js regression tests
 .github/                 CI and deployment templates
 AGENTS.md                Contributor and agent maintenance instructions
@@ -94,6 +96,47 @@ insecure and must not be used for real data.**
 
 ## Playground behavior
 
+### Graph lab and games
+
+The graph-database-inspired workspace is entirely client-side: it does not query
+an actual graph database. Its universe is the integers 1-12, 1-24, 1-36, or 1-48.
+Start with the guided **6 connects to 12** example. A circle is a number; a line
+is a mathematical relationship explained in the side panel.
+
+- **Multiply by one prime:** an edge connects a to b when b/a is prime (a < b).
+  It is not the graph of every possible divisibility relationship.
+- **Share a building block:** numbers connect exactly when their GCD exceeds 1.
+- **Neighboring primes:** only consecutive primes in the displayed range connect.
+  The inspector gives the difference; composites remain as unconnected nodes.
+- Select or drag nodes; pan the background; use zoom, pan and reset buttons.
+  Orbits and grid layouts are deterministic rather than physics simulations.
+  A selected-neighborhood filter reduces clutter.
+- Keyboard users can select nodes with Enter/Space and move them with arrow keys.
+  An accessible list provides the same selections without dragging. Node classes
+  have text labels as well as colors.
+
+Three games use that same graph:
+
+| Game | Goal |
+| --- | --- |
+| Prime sweep | Find all primes; types, edges and inspector answers are hidden until the round ends |
+| Factor forge | Multiply selected prime factors to assemble a target; repeated factors are allowed |
+| Path quest | Follow prime multiplication/division edges to a goal without using 1 |
+
+Untimed learning is the default; optional 60/120-second rounds can be paused.
+Leaving the tab pauses the round and clock. Starting a new round clears the old
+timer and progress; the targets rotate. Wrong answers give an explanation rather
+than silently failing. Hints cost 5 points. Scores stay only in memory for this
+tab; no personal information, leaderboard, storage or backend is used.
+
+Collected primes/factors earn 10 points and completion earns 100; errors cost 5.
+Path points are awarded only for completion, with a 5-point penalty for each step
+beyond the shortest route. Hints cost 5 and scores cannot be negative. Duplicate
+prime collection and traversal loops cannot farm points. Ending or timing out
+reveals answers, and no further moves score.
+
+### Existing number tools
+
 - The sieve visualizes integers 1-100, with selectable speed and a reset that
   cancels an active animation. It keeps 1 separate from composites.
 - The analyzer accepts digit-only positive integers from **1 through
@@ -130,12 +173,15 @@ node --check docs/scripts/app.js
 node --check docs/scripts/math.js
 node --check docs/scripts/lessons.js
 node --check docs/scripts/lessons-math.js
+node --check docs/scripts/graph-math.js
+node --check docs/scripts/graph-lab.js
 ```
 
 The tests cover exact divisors and neighbors, exhaustive small-number checks,
 large primes and semiprimes, pseudoprimes, input boundaries, cancellation,
 published gap examples, teaching-lesson invariants, RSA round trips for every
-message in selected small moduli, and local page/asset/anchor references.
+message in selected small moduli, graph edge correctness, shortest paths, game
+completion/scoring invariants, and local page/asset/anchor references.
 
 For browser validation, exercise each form with defaults, changed values, invalid
 inputs and recovery. Check keyboard interaction, calculator cancellation, and
