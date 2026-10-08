@@ -1,0 +1,23 @@
+# Local browser and test artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
+coverage/
+*.log
+
+# Local dependencies and caches
+node_modules/
+__pycache__/
+.cache/
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 2: discover the largest primes, compare Eratosthenes, Miller-Rabin and AKS, and explore prime gaps and twin primes.">
+    <meta name="theme-color" content="#080909"><title>Patterns &amp; Discovery — Indivisible</title>
+    <link rel="icon" type="image/svg+xml" href="prism.svg"><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Indivisible home"><span class="brand-mark" aria-hidden="true">ıı</span> indivisible<span class="brand-dot">.</span></a>
+        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html">Foundations</a><a href="explore.html" aria-current="page">Explore</a><a href="advanced.html">Deep math</a><a href="resources.html">Resources</a></nav>
+        <a class="button button-small" href="playground.html">Enter the lab ↗</a>
+    </header>
+    <main id="main" class="container">
+        <section class="page-hero">
+            <div class="breadcrumbs"><a href="index.html">Overview</a><span>/</span><a href="foundations.html">Level 01</a><span>/</span><span>Level 02</span></div>
+            <span class="pill">LEVEL 02 · INTERMEDIATE</span><h1>Order in the<br><span class="text-lime">unexpected.</span></h1><p>Now that you know what a prime is, let's find them. Discover the methods, the records, and the curious spaces in between.</p>
+        </section>
+        <nav class="chapter-nav" aria-label="On this page"><a href="#largest">01 / Record holders</a><a href="#algorithms">02 / The algorithms</a><a href="#gaps">03 / Prime gaps</a></nav>
+        <section id="largest" class="content-section">
+            <p class="eyebrow">01 / Numbers at an extraordinary scale</p><h2>The largest known primes.</h2>
+            <p class="lead">The current top five are all <strong>Mersenne primes</strong>: one less than a power of two. Their special form makes efficient primality proofs possible with the Lucas-Lehmer test.</p>
+            <div class="table-scroll" tabindex="0" role="region" aria-label="Largest known primes table">
+                <table><caption>Top five, checked against PrimePages on October 7, 2026. Dates below are discovery dates.</caption><thead><tr><th scope="col">Rank</th><th scope="col">Prime</th><th scope="col">Decimal digits</th><th scope="col">Discovered</th><th scope="col">Type</th></tr></thead><tbody>
+                    <tr><td>01</td><td class="mono text-lime">2<sup>136,279,841</sup> − 1</td><td>41,024,320</td><td>October 2024</td><td>Mersenne</td></tr>
+                    <tr><td>02</td><td class="mono">2<sup>82,589,933</sup> − 1</td><td>24,862,048</td><td>December 2018</td><td>Mersenne</td></tr>
+                    <tr><td>03</td><td class="mono">2<sup>77,232,917</sup> − 1</td><td>23,249,425</td><td>December 2017</td><td>Mersenne</td></tr>
+                    <tr><td>04</td><td class="mono">2<sup>74,207,281</sup> − 1</td><td>22,338,618</td><td>January 2016</td><td>Mersenne</td></tr>
+                    <tr><td>05</td><td class="mono">2<sup>57,885,161</sup> − 1</td><td>17,425,170</td><td>January 2013</td><td>Mersenne</td></tr>
+                </tbody></table>
+            </div>
+            <div class="reading-grid" style="margin-top:24px">
+                <article class="panel"><h3>A cloud-sized discovery</h3><p>Luke Durant's network spanned thousands of GPUs across 24 datacenter regions in 17 countries. An NVIDIA A100 in Dublin reported a probable prime on October 11, 2024; an H100 in San Antonio confirmed primality with Lucas-Lehmer on October 12.</p><p>Independent tests on different hardware and programs then verified the result.</p></article>
+                <article class="panel"><h3>A special form. Not a guarantee.</h3><p>If <code>2<sup>p</sup> − 1</code> is prime, p must be prime. The reverse does not always hold: <code>2<sup>11</sup> − 1 = 2,047 = 23 × 89</code>.</p><p>Other forms also produce enormous primes. The sixth-largest entry is the generalized Fermat prime <code>2,524,190<sup>2,097,152</sup> + 1</code>, with 13,426,224 digits, discovered in 2025.</p></article>
+            </div>
+            <p class="source-note"><a href="https://t5k.org/primes/lists/all.txt">Live PrimePages list</a> · <a href="https://www.mersenne.org/primes/press/M136279841.html">GIMPS: the 2024 discovery</a>. Records can change; these are dated snapshots, not live results.</p>
+        </section>
+        <section id="algorithms" class="content-section">
+            <p class="eyebrow">02 / Different questions. Different tools.</p><h2>How do we find a prime?</h2>
+            <p class="lead">Listing every small prime and proving that one enormous number is prime are different jobs. Select a method to see how it works.</p>
+            <div class="tabs" role="tablist" aria-label="Primality algorithms">
+                <button type="button" role="tab" id="tab-sieve" aria-selected="true" aria-controls="algorithm-sieve">Eratosthenes</button>
+                <button type="button" role="tab" id="tab-miller" aria-selected="false" aria-controls="algorithm-miller" tabindex="-1">Miller-Rabin</button>
+                <button type="button" role="tab" id="tab-aks" aria-selected="false" aria-controls="algorithm-aks" tabindex="-1">AKS</button>
+            </div>
+            <article class="panel" id="algorithm-sieve" role="tabpanel" aria-labelledby="tab-sieve" tabindex="0">
+                <div class="algorithm-meta"><span class="pill">GENERATES PRIMES</span><span class="pill">O(n log log n)</span></div><h3>The Sieve of Eratosthenes</h3><p>Think of sifting sand: remove what doesn't belong, and the primes remain. This method lists all primes up to a chosen limit.</p>
+                <ol><li>Write down the integers from 2 through n. Keep 1 separate: it is neither prime nor composite.</li><li>Take the smallest uncrossed number p. It's prime. Cross out its multiples, starting at p²; smaller multiples were already handled.</li><li>Repeat for uncrossed p up to √n. Every uncrossed number remaining is prime.</li></ol>
+                <p>Why stop at √n? Every composite at most n has a prime factor at most √n.</p><div class="button-row"><a class="button button-small" href="playground.html#interactive">See the sieve in action ↗</a></div>
+            </article>
+            <article class="panel" id="algorithm-miller" role="tabpanel" aria-labelledby="tab-miller" tabindex="0" hidden>
+                <div class="algorithm-meta"><span class="pill">TESTS ONE NUMBER</span><span class="pill">USUALLY PROBABILISTIC</span></div><h3>The Miller-Rabin test</h3><p>Think of a series of identity checks. A failed check exposes a composite. Passing many checks makes a number a strong probable-prime candidate.</p>
+                <ol><li>Handle 2, 3, and even numbers first. For odd n &gt; 3, write <code>n − 1 = 2<sup>s</sup>d</code> with d odd.</li><li>Choose a base a from 2 through n − 2 and calculate <code>a<sup>d</sup> mod n</code>. If the result is 1 or n − 1, this round passes.</li><li>Otherwise, square modulo n up to s − 1 times. The round passes if a result is n − 1. If none is, n is composite.</li></ol>
+                <p>For a fixed odd composite, k independently and uniformly chosen random bases have a false-pass probability at most <code>4<sup>−k</sup></code>. That is not the posterior probability that a passing number is composite.</p>
+                <div class="callout">Carefully chosen fixed bases give deterministic results within specified integer bounds. Outside those bounds, passing rounds alone is not a proof.</div>
+            </article>
+            <article class="panel" id="algorithm-aks" role="tabpanel" aria-labelledby="tab-aks" tabindex="0" hidden>
+                <div class="algorithm-meta"><span class="pill">PROVES PRIMALITY</span><span class="pill">DETERMINISTIC POLYNOMIAL TIME</span></div><h3>The AKS primality test</h3><p>Agrawal, Kayal, and Saxena's 2002 breakthrough proved that primality can be decided deterministically in polynomial time without unproved hypotheses.</p>
+                <p>Its starting idea resembles Fermat's theorem for polynomials: for prime n, <code>(x + a)<sup>n</sup> ≡ x<sup>n</sup> + a (mod n)</code>. AKS combines perfect-power and factor checks with carefully bounded polynomial congruences modulo <code>x<sup>r</sup> − 1</code>.</p>
+                <div class="callout"><strong>Polynomial in what?</strong> The number of digits of n, not n itself. This matters enormously in theory, although Miller-Rabin and specialized tests are generally more practical.</div>
+            </article>
+            <noscript><p class="callout">Enable JavaScript to switch algorithm tabs. Definitions and source references are also available in the <a class="prose-link" href="resources.html">glossary</a>.</p></noscript>
+        </section>
+        <section id="gaps" class="content-section">
+            <p class="eyebrow">03 / The spaces in between</p><h2>Close neighbors.<br>Vast distances.</h2>
+            <p class="lead">A prime gap is the difference between consecutive primes. The primes are not random, but their local spacing is irregular. Near a large x, the average spacing is approximately ln(x).</p>
+            <div class="reading-grid">
+                <article class="panel"><div class="big-number">01</div><h3>The smallest gap</h3><p>The gap between 2 and 3 is 1. It happens exactly once. Since 2 is the only even prime, all later primes are odd, so all later gaps are even and at least 2.</p></article>
+                <article class="panel"><div class="big-number">∞</div><h3>No largest possible gap</h3><p>For any n ≥ 2, the integers <code>n! + 2, n! + 3, …, n! + n</code> are all composite. Each <code>n! + k</code> is divisible by k. That gives n − 1 consecutive composites, as long a run as you like.</p></article>
+            </div>
+            <div class="panel" style="margin-top:24px"><h3>Largest known gaps with identified endpoints</h3><ul><li><strong>Proven endpoints: 1,113,106.</strong> The primes at either end each have 18,662 digits. Found by P. Cami, M. Jansen, and J. K. Andersen.</li><li><strong>Probable-prime endpoints: 16,045,848.</strong> Found by Andreas Höglund in March 2024, with endpoints of 385,713 digits. These endpoints passed strong tests but lack a final primality proof.</li></ul><p>These are computational records with identified endpoints, not upper bounds on how big a gap can be.</p><p class="source-note"><a href="https://en.wikipedia.org/wiki/Prime_gap#Numerical_results">Prime-gap numerical results and references</a>, checked October 7, 2026.</p></div>
+            <div class="reading-grid" style="margin-top:24px">
+                <article class="panel"><h3>A hundred numbers. One prime.</h3><p>370,261 and 370,373 are consecutive primes. Their gap is <strong>112</strong>, containing <strong>111 composite integers</strong> strictly between them.</p><ul><li><strong>370,261–370,360:</strong> 100 integers, one prime (370,261).</li><li><strong>370,262–370,361:</strong> 100 integers, zero primes.</li></ul><p>These are sliding windows, not blocks aligned to multiples of 100. In the smaller window 91–100, only 97 is prime.</p></article>
+                <article class="panel"><h3>And yet, primes stay close.</h3><p>The <strong>Twin Prime Conjecture</strong> says there are infinitely many prime pairs exactly 2 apart, such as 11 and 13. It remains unproved.</p><ul><li><strong>2013:</strong> Yitang Zhang proves infinitely many pairs have gaps at most 70 million.</li><li><strong>2013–2014:</strong> Maynard and Tao develop stronger methods; the Polymath collaboration lowers the unconditional bound to <strong>246</strong>.</li></ul><p>A finite bound is a breakthrough. It is not yet a proof of the bound 2.</p></article>
+            </div>
+        </section>
+        <div class="next-chapter"><a class="text-link" href="foundations.html">← Back to the foundations</a><a class="button" href="advanced.html">Level 03: Beyond the obvious →</a></div>
+    </main>
+    <footer class="site-footer container"><a class="brand" href="index.html">indivisible.</a><p>Made for curious minds. Not just mathematicians.</p><a href="resources.html">Sources &amp; glossary ↗</a></footer>
+</body>
+</html>

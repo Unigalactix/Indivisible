@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 620" fill="none">
+  <defs>
+    <linearGradient id="green" x1="300" y1="90" x2="520" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#dcffb5" stop-opacity=".9"/><stop offset=".38" stop-color="#a4ff57" stop-opacity=".15"/><stop offset="1" stop-color="#4eff93" stop-opacity=".65"/></linearGradient>
+    <linearGradient id="blue" x1="120" y1="160" x2="410" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#75f4ff" stop-opacity=".75"/><stop offset=".48" stop-color="#376884" stop-opacity=".18"/><stop offset="1" stop-color="#a4baff" stop-opacity=".65"/></linearGradient>
+    <linearGradient id="violet" x1="170" y1="350" x2="430" y2="580" gradientUnits="userSpaceOnUse"><stop stop-color="#d7bdff" stop-opacity=".8"/><stop offset=".6" stop-color="#a163e7" stop-opacity=".18"/><stop offset="1" stop-color="#ba84ff" stop-opacity=".8"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+    <radialGradient id="shine"><stop stop-color="white" stop-opacity=".7"/><stop offset="1" stop-color="white" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g stroke="#a5ff6c" stroke-width="1.5">
+    <path d="M322 67 502 215 458 410 281 440 204 235Z" fill="url(#green)"/>
+    <path d="m322 67 27 224 153-76M349 291l109 119M349 291l-68 149M349 291 204 235" opacity=".85"/>
+    <path d="m330 87 157 133-140 62Z" stroke="#e1ffcb" opacity=".45"/>
+  </g>
+  <g stroke="#86eaff" stroke-width="1.5">
+    <path d="m172 171 189 73 46 204-201 33L81 322Z" fill="url(#blue)"/>
+    <path d="m172 171 44 180 145-107M216 351l191 97M216 351l-10 130M216 351 81 322" opacity=".8"/>
+    <path d="m171 181 40 161-118-21Z" stroke="#c4ffff" opacity=".55"/>
+  </g>
+  <g stroke="#cda5ff" stroke-width="1.5">
+    <path d="m329 360 155 83-57 117-174-9-37-129Z" fill="url(#violet)"/>
+    <path d="m329 360 10 141 145-58M339 501l88 59M339 501l-86 50M339 501 216 422" opacity=".8"/>
+  </g>
+  <g filter="url(#glow)" opacity=".55" stroke-width="3"><path d="m322 67 180 148-44 195" stroke="#a5ff6c"/><path d="m172 171-91 151 125 159" stroke="#86eaff"/><path d="m329 360 155 83-57 117" stroke="#cda5ff"/></g>
+  <ellipse cx="350" cy="292" rx="28" ry="28" fill="url(#shine)"/>
+  <ellipse cx="216" cy="351" rx="16" ry="16" fill="url(#shine)"/>
+</svg>
