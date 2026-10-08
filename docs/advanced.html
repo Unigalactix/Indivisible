@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 3: Riemann's zeta function, musical harmonics, clock arithmetic, Fermat's Little Theorem, and the unsolved mysteries of primes.">
+    <meta name="theme-color" content="#080909"><title>Beyond the Obvious — Indivisible</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/prism.svg"><link rel="stylesheet" href="assets/css/styles.css"><script src="scripts/math.js" defer></script><script src="scripts/app.js" defer></script><script src="scripts/lessons-math.js" defer></script><script src="scripts/lessons.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Indivisible home"><span class="brand-mark" aria-hidden="true">ıı</span> indivisible<span class="brand-dot">.</span></a>
+        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html">Foundations</a><a href="explore.html">Explore</a><a href="advanced.html" aria-current="page">Deep math</a><a href="applications.html">Applications</a><a href="visuals.html">Visual atlas</a><a href="research.html">Research</a><a href="resources.html">Resources</a></nav>
+        <a class="button button-small" href="playground.html">Enter the lab ↗</a>
+    </header>
+    <main id="main" class="container">
+        <section class="page-hero">
+            <div class="breadcrumbs"><a href="index.html">Overview</a><span>/</span><a href="explore.html">Level 02</a><span>/</span><span>Level 03</span></div>
+            <span class="pill">LEVEL 03 · ADVANCED IDEAS, SIMPLE EXPLANATIONS</span><h1>Beyond the<br><span class="text-lime">obvious.</span></h1><p>Clocks. Music. Infinity. Sometimes the best way into a difficult mathematical idea is through something you already understand.</p>
+        </section>
+        <nav class="chapter-nav" aria-label="On this page"><a href="#deep-math">The main ideas</a><a href="#clock-lab">Clock lab</a><a href="#zeta-lab">Euler product</a><a href="#progressions">Progressions</a><a href="#beyond-integers">Beyond integers</a><a href="#mysteries">Open questions</a></nav>
+        <section id="deep-math" class="content-section">
+            <p class="eyebrow">01 / Familiar analogies. Unfamiliar worlds.</p><h2>Deep math,<br>simply explained.</h2>
+            <div class="reading-grid">
+                <article class="panel">
+                    <span class="pill">THE ZETA FUNCTION</span>
+                    <div class="wave-visual" aria-hidden="true"><i style="--height:16px"></i><i style="--height:30px"></i><i style="--height:50px"></i><i style="--height:76px"></i><i style="--height:54px"></i><i style="--height:25px"></i><i style="--height:13px"></i><i style="--height:40px"></i><i style="--height:68px"></i><i style="--height:85px"></i><i style="--height:56px"></i><i style="--height:30px"></i><i style="--height:15px"></i><i style="--height:35px"></i><i style="--height:54px"></i><i style="--height:34px"></i><i style="--height:14px"></i></div>
+                    <h3>Can you hear the primes?</h3>
+                    <p>Think of prime counting as a sound: a smooth main tone, plus intricate overtones. The <strong>Riemann Zeta Function</strong> connects the counting numbers to the primes.</p>
+                    <div class="formula">ζ(s) = 1 + 1/2<sup>s</sup> + 1/3<sup>s</sup> + …</div>
+                    <p>For real s &gt; 1, this sum equals a product over every prime:</p>
+                    <div class="formula">ζ(s) = ∏<sub>p prime</sub> (1 − p<sup>−s</sup>)<sup>−1</sup></div>
+                    <p>Why? Expand each factor as a geometric series. Unique prime factorization makes every positive integer appear exactly once. This is <strong>Euler's product</strong>.</p>
+                    <p>Extend the function to complex inputs (except its pole at 1), and its nontrivial zeros contribute oscillating corrections to smooth estimates of prime counts. Like harmonics shaping a sound, these corrections reveal fine structure.</p>
+                    <div class="callout purple"><strong>The analogy has limits.</strong> Primes are not literally musical notes, and the series above does not converge everywhere. The complex extension is what lets mathematicians study the zeros.</div>
+                </article>
+                <article class="panel">
+                    <span class="pill">MODULAR ARITHMETIC &amp; FERMAT</span>
+                    <div class="clock-visual" aria-hidden="true">01</div>
+                    <h3>Math that goes full circle.</h3>
+                    <p>It's 10 o'clock. Four hours later it's 2, not 14. You've already used <strong>modular arithmetic</strong>: keep the remainder after dividing by a fixed number.</p>
+                    <div class="formula">14 ≡ 2 (mod 12)</div>
+                    <p><strong>Fermat's Little Theorem</strong> says that for a prime p and any integer a:</p>
+                    <div class="formula">a<sup>p</sup> ≡ a (mod p)</div>
+                    <p>If a is not divisible by p, an equivalent form is <code>a<sup>p−1</sup> ≡ 1 (mod p)</code>. On a 7-position clock, <code>3<sup>6</sup> = 729 = 104 × 7 + 1</code>: you land on 1.</p>
+                    <p>That reliable pattern helps test primality. Related modular arithmetic also explains part of how RSA encryption works.</p>
+                    <div class="callout"><strong>A warning about impostors.</strong> 341 = 11 × 31 is composite, yet <code>2<sup>340</sup> ≡ 1 (mod 341)</code>. Passing a Fermat test alone does not prove primality. <a class="prose-link" href="explore.html#algorithms">Miller-Rabin asks stronger questions.</a></div>
+                </article>
+            </div>
+        </section>
+        <section id="clock-lab" class="content-section">
+            <p class="eyebrow">Visual lesson / Modular arithmetic and finite fields</p><h2>Change the clock.<br>Change the rules.</h2>
+            <p class="lead">Start at 0 and repeatedly add the step size. Which clock positions can you reach? Then inspect multiplication on the same clock. The highlighted 1s in the table reveal multiplicative inverse pairs.</p>
+            <div class="panel interactive-lesson"><form id="modularForm" class="lesson-controls" novalidate><label for="modularModulus">Clock size / modulus<select id="modularModulus" name="modulus"><option>5</option><option selected>7</option><option>8</option><option>11</option><option>12</option></select></label><label for="modularMultiplier">Step size (1–20)<input id="modularMultiplier" name="multiplier" type="number" min="1" max="20" value="3"></label><button class="button button-small" type="submit">Explore the clock ↗</button></form><p id="modularFormError" class="error-message" role="alert"></p><div id="modularFormOutput"><div class="reading-grid"><svg id="modularSvg" class="lesson-svg clock-svg" role="img" aria-label="Reachable residues on a modular clock"></svg><div class="table-scroll compact-table" tabindex="0" role="region" aria-label="Modular multiplication table"><table id="modularTable"></table></div></div><p id="modularSummary" class="lesson-summary" role="status"></p></div></div>
+            <div class="details-list">
+                <details open><summary>Try 2 steps on an 8-position clock</summary><p>You visit only 0, 2, 4, and 6. Since gcd(2, 8) = 2, you cannot reach every residue. Multiplication by 2 also has no inverse modulo 8. Contrast that with a nonzero step on a prime-sized clock: it reaches every position before repeating.</p></details>
+                <details><summary>A short proof of Fermat's Little Theorem</summary><p>For a not divisible by prime p, the residues a, 2a, …, (p − 1)a are a permutation of 1, 2, …, p − 1. Multiply all of them. You get <code>a<sup>p−1</sup>(p − 1)! ≡ (p − 1)! (mod p)</code>. The factorial has an inverse modulo p, so cancel it to obtain a<sup>p−1</sup> ≡ 1.</p></details>
+                <details><summary>Euler, Carmichael, and the limits of one test</summary><p>Euler generalizes Fermat: if gcd(a, n) = 1, then a<sup>φ(n)</sup> ≡ 1 (mod n). Conversely, satisfying a Fermat congruence does not prove n prime. Carmichael numbers, such as <code>561 = 3 × 11 × 17</code>, pass a<sup>n−1</sup> ≡ 1 for every base coprime to n. Miller-Rabin uses stronger conditions.</p></details>
+                <details><summary>Wilson's theorem: an exact but inefficient test</summary><p>An integer p &gt; 1 is prime exactly when <code>(p − 1)! ≡ −1 (mod p)</code>. For a prime, nonzero residues pair with their inverses, except 1 and −1; their product is −1. This beautiful characterization is generally not a practical way to test enormous candidates.</p></details>
+            </div>
+        </section>
+        <section id="zeta-lab" class="content-section">
+            <p class="eyebrow">Visual lesson / The Euler product, without pretending to plot RH</p><h2>All integers.<br>Only primes.<br>The same function.</h2>
+            <p class="lead">Compare a finite sum over integers with a finite product over primes. As their cutoffs grow, both approach ζ(s) for real s &gt; 1. The infinite identity comes from unique factorization, not a numerical coincidence.</p>
+            <div class="panel interactive-lesson"><form id="zetaForm" class="lesson-controls" novalidate><label for="zetaS">Real exponent s (1.2–4)<input id="zetaS" name="s" type="number" min="1.2" max="4" step="0.1" value="2"></label><label for="zetaTerms">Cutoff N<select id="zetaTerms" name="terms"><option>10</option><option>100</option><option selected>1000</option></select></label><button class="button button-small" type="submit">Compare approximations ↗</button></form><p id="zetaFormError" class="error-message" role="alert"></p><div id="zetaFormOutput"><div class="comparison-row"><span>Sum of n<sup>−s</sup> for 1 ≤ n ≤ N</span><strong id="zetaSum"></strong><div class="comparison-track"><i id="zetaSumBar" class="lime-bar"></i></div></div><div class="comparison-row"><span>Product of (1 − p<sup>−s</sup>)<sup>−1</sup> for primes p ≤ N</span><strong id="zetaProduct"></strong><div class="comparison-track"><i id="zetaProductBar"></i></div></div><p id="zetaSummary" class="lesson-summary" role="status"></p></div></div>
+            <p class="source-note">Both bars share the upper bound “partial sum + integral tail bound.” Calculations use floating-point approximations. This experiment stays in the convergent real domain; it does not evaluate zeros in the critical strip.</p>
+            <div class="details-list">
+                <details><summary>Why don't the two finite versions match exactly?</summary><p>The finite product includes every positive integer whose prime factors are at most N—even some integers larger than N. The finite sum includes only integers at most N. The product is therefore at least the sum in exact arithmetic, and both are below the infinite value. Infinite sums and products must be handled in a region where the rearrangements converge.</p></details>
+                <details><summary>What happens near s = 1?</summary><p>The terms decay more slowly, convergence worsens, and the tail bound becomes larger. At s = 1, the harmonic series diverges. The analytically continued zeta function has a pole there. You cannot use the original sum as a convergent definition on the whole complex plane.</p></details>
+                <details><summary>From zeta to primes: the explicit-formula idea</summary><p>The logarithmic derivative of the Euler product encodes prime powers with weights involving log p. Complex analysis relates sums of those weights to the pole at 1 and the zeros. The main term describes broad density; zeros contribute oscillatory corrections. In formal statements, endpoint conventions, convergence, and smoothing matter.</p></details>
+                <details><summary>Why the music analogy is useful—and incomplete</summary><p>Different zeros contribute different oscillations, much as harmonics combine in a sound. But a graph of an arbitrary sine wave is not a graph of the zeta function, and audible notes are not a proof of prime distribution. Here the analogy introduces the idea; the finite Euler product demonstrates an actual identity in its valid domain.</p></details>
+            </div>
+        </section>
+        <section id="progressions" class="content-section">
+            <p class="eyebrow">Visual lesson / Dirichlet's theorem</p><h2>Primes along<br>different lanes.</h2><p class="lead">Separate primes by their remainder modulo q. Dirichlet's theorem says that if gcd(a, q) = 1, the progression a, a + q, a + 2q, … contains infinitely many primes. Sharing a factor with q creates an obstruction.</p>
+            <div class="panel interactive-lesson"><form id="progressionForm" class="lesson-controls" novalidate><label for="progressionModulus">Modulus q (2–20)<input id="progressionModulus" name="modulus" type="number" min="2" max="20" value="10"></label><label for="progressionResidue">Selected remainder a (0 ≤ a &lt; q)<input id="progressionResidue" name="residue" type="number" min="0" max="19" value="3"></label><button class="button button-small" type="submit">Compare the lanes ↗</button></form><p id="progressionFormError" class="error-message" role="alert"></p><div id="progressionFormOutput"><svg id="progressionSvg" class="lesson-svg" role="img" aria-label="Prime counts by residue class"></svg><p id="progressionSummary" class="lesson-summary" role="status"></p><p id="progressionPrimes" class="prime-range scroll-notes"></p></div></div>
+            <details><summary>Try remainder 5 modulo 10</summary><p>Every integer in that lane is divisible by 5. Only 5 itself can be prime. In contrast, remainders 1, 3, 7, and 9 are coprime to 10 and each contains infinitely many primes. Their counts up to 1,000 need not match.</p></details>
+            <details><summary>Dirichlet versus Green–Tao: different statements</summary><p>Dirichlet fixes a progression with coprime starting value and step and finds infinitely many prime terms, mixed with composites. Green–Tao finds arbitrarily long finite progressions whose every term is prime, with the progression allowed to vary. Neither says one nonconstant infinite arithmetic progression contains only primes.</p></details>
+            <p class="source-note">Start with <a href="https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/pages/lecture-notes/">number-theory lecture notes</a>; for the deeper additive result, see <a href="https://arxiv.org/abs/math/0404188">Green–Tao's paper</a>.</p>
+        </section>
+        <section id="beyond-integers" class="content-section">
+            <p class="eyebrow">A map for further study / Advanced</p><h2>“Prime” reaches<br>beyond ordinary numbers.</h2>
+            <div class="reading-grid">
+                <article class="panel"><h3>Gaussian integers and prime ideals</h3><p>In the numbers a + bi with integer a and b, <code>5 = (2 + i)(2 − i)</code> factors further, while 3 remains prime. Whether something is prime depends on the arithmetic system you allow.</p><p>In more general rings of algebraic integers, elements may fail to factor uniquely. Prime ideals restore an important form of unique factorization for ideals, extending the role of ordinary primes.</p></article>
+                <article class="panel"><h3>p-adic numbers: a new sense of closeness</h3><p>Fix a prime p. Two integers are close in the p-adic metric when their difference is divisible by a large power of p. For p = 5, 1 and 126 are close because 126 − 1 = 5³, giving distance 1/125.</p><p>This turns compatible solutions modulo p, p², p³, … into an arithmetic geometry. Under suitable hypotheses, Hensel's lemma lifts a solution modulo p to higher prime powers.</p></article>
+                <article class="panel"><h3>L-functions and arithmetic fingerprints</h3><p>Zeta is one example of an L-function. Others encode characters, elliptic curves, or automorphic objects. Their Euler products organize information prime by prime; analytic behavior can reflect arithmetic structure.</p><p>The generalized Riemann hypothesis is a collection of related conjectures, not an automatic consequence of the ordinary RH.</p></article>
+                <article class="panel"><h3>Modular forms and the Langlands viewpoint</h3><p>Different mathematical objects can carry matching information at each prime. Deep correspondences between them link number theory, geometry, and representation theory.</p><p>This is a research landscape, not one finished theorem called “Langlands.” A practical learning route is algebra → finite fields → number fields or elliptic curves → modular forms and L-functions.</p></article>
+            </div>
+            <div class="details-list"><details><summary>More arithmetic functions worth knowing</summary><p><code>τ(n)</code> counts positive divisors; <code>σ(n)</code> adds them; <code>φ(n)</code> counts coprime residues. The Möbius function μ(n) is 0 when a prime square divides n, otherwise (−1)<sup>k</sup> for k distinct prime factors, with μ(1) = 1. The von Mangoldt function Λ(n) is log p if n is a positive power of a prime p, and 0 otherwise. These functions translate prime questions into sums and identities.</p></details><details><summary>Reciprocal primes and density zero</summary><p>Primes become sparse: their natural density among positive integers is zero. Yet the sum of their reciprocals diverges. Sparsity and a divergent reciprocal sum are compatible. This is a stronger statement than merely saying there are infinitely many primes.</p></details><details><summary>Bertrand's postulate and what it guarantees</summary><p>For every integer n &gt; 1, there is a prime p with n &lt; p &lt; 2n. This guarantees a nearby prime on a multiplicative scale, not a tiny additive gap. Our analyzer uses this bound to keep the next-prime search for inputs at most 100 trillion below 200 trillion.</p></details></div>
+        </section>
+        <section id="mysteries" class="content-section">
+            <p class="eyebrow">02 / The edge of what we know</p><h2>Simple to ask.<br>Still unsolved.</h2>
+            <p class="lead">A conjecture is a statement mathematicians believe may be true, but have not proved. Even overwhelming numerical evidence cannot replace a proof about infinitely many cases.</p>
+            <div class="reading-grid">
+                <article class="panel"><span class="pill">OPEN PROBLEM</span><h3 style="margin-top:22px">The Riemann Hypothesis</h3><p>Every nontrivial zero of the zeta function has real part exactly <strong>1/2</strong>. If true, this would give exceptionally sharp control over the error in estimates of prime counts.</p><p>The connection between zeros and primes is established mathematics. Their proposed alignment on this “critical line” is the unproved part.</p><p class="source-note"><a href="https://www.claymath.org/millennium/riemann-hypothesis/">A Clay Mathematics Institute Millennium Prize Problem ↗</a></p></article>
+                <article class="panel"><span class="pill">OPEN PROBLEM</span><h3 style="margin-top:22px">The Twin Prime Conjecture</h3><p>Are there infinitely many primes p such that p + 2 is also prime? We know infinitely many prime gaps are at most 246. We don't yet know whether infinitely many equal 2.</p><p>Arbitrarily large gaps and infinitely many bounded gaps can coexist. One describes how far primes can drift apart; the other describes how often they return close together.</p><p class="source-note"><a href="explore.html#gaps">Explore Zhang, Maynard, Tao, and Polymath's progress ↗</a></p></article>
+            </div>
+            <div class="callout"><strong>Your next step:</strong> explore the sources, revisit a theorem, or experiment with a counterexample. Understanding the difference between a pattern and a proof is already a big mathematical leap.</div>
+        </section>
+        <div class="callout">Continue with dated, source-linked notes on <a class="prose-link" href="research.html">current research</a>, or see how these structures support <a class="prose-link" href="applications.html">real applications</a>.</div>
+        <noscript><p class="callout">Enable JavaScript to change the modular, Euler-product, and progression experiments. The worked examples and deeper notes remain readable.</p></noscript>
+        <div class="next-chapter"><a class="text-link" href="explore.html">← Back to patterns &amp; discovery</a><a class="button" href="research.html">Meet the research frontier ↗</a></div>
+    </main>
+    <footer class="site-footer container"><a class="brand" href="index.html">indivisible.</a><p>Made for curious minds. Not just mathematicians.</p><a href="resources.html">Sources &amp; glossary ↗</a></footer>
+</body>
+</html>

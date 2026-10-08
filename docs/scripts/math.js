@@ -77,6 +77,20 @@ const PrimeMath = (() => {
         return divisors.sort((a, b) => a - b);
     }
 
+    function modularPower(base, exponent, modulus) {
+        if ([base, exponent, modulus].some(value => typeof value !== 'bigint') || exponent < 0n || modulus < 1n) {
+            throw new RangeError('Modular powers require BigInts, a nonnegative exponent, and a positive modulus.');
+        }
+        base = ((base % modulus) + modulus) % modulus;
+        let result = 1n % modulus;
+        while (exponent > 0n) {
+            if (exponent % 2n) result = result * base % modulus;
+            base = base * base % modulus;
+            exponent /= 2n;
+        }
+        return result;
+    }
+
     function isPrime(value) {
         if (!Number.isSafeInteger(value) || value < 0 || value > 2 * MAX_INTEGER) {
             throw new RangeError('Primality checks support integers from 0 through 200 trillion.');
@@ -94,18 +108,9 @@ const PrimeMath = (() => {
             d /= 2n;
             s++;
         }
-        function modularPower(base, exponent) {
-            let result = 1n;
-            while (exponent > 0n) {
-                if (exponent % 2n) result = result * base % n;
-                base = base * base % n;
-                exponent /= 2n;
-            }
-            return result;
-        }
         // These seven bases are deterministic below 341,550,071,728,321.
         return bases.every(base => {
-            let x = modularPower(BigInt(base), d);
+            let x = modularPower(BigInt(base), d, n);
             if (x === 1n || x === n - 1n) return true;
             for (let r = 1; r < s; r++) {
                 x = x * x % n;
@@ -150,7 +155,7 @@ const PrimeMath = (() => {
         return value === 1 ? 'Unit' : divisors.length === 2 ? 'Prime' : 'Composite';
     }
 
-    return { MAX_INTEGER, parseInteger, sieve, getDivisors, isPrime, getPrimeNeighbors, classify };
+    return { MAX_INTEGER, parseInteger, sieve, getDivisors, isPrime, getPrimeNeighbors, modularPower, classify };
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = PrimeMath;

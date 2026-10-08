@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 1: understand primes, composites, and unique factorization. Explore prime history and all 168 primes up to 1,000.">
+    <meta name="theme-color" content="#080909"><title>The Foundations — Indivisible</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/prism.svg"><link rel="stylesheet" href="assets/css/styles.css"><script src="scripts/math.js" defer></script><script src="scripts/app.js" defer></script><script src="scripts/lessons-math.js" defer></script><script src="scripts/lessons.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Indivisible home"><span class="brand-mark" aria-hidden="true">ıı</span> indivisible<span class="brand-dot">.</span></a>
+        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html" aria-current="page">Foundations</a><a href="explore.html">Explore</a><a href="advanced.html">Deep math</a><a href="applications.html">Applications</a><a href="visuals.html">Visual atlas</a><a href="research.html">Research</a><a href="resources.html">Resources</a></nav>
+        <a class="button button-small" href="playground.html">Enter the lab ↗</a>
+    </header>
+    <main id="main" class="container">
+        <section class="page-hero">
+            <div class="breadcrumbs"><a href="index.html">Overview</a><span>/</span><span>Level 01</span></div>
+            <span class="pill">LEVEL 01 · BEGINNER</span><h1>Every number has<br>a <span class="text-lime">beginning.</span></h1>
+            <p>Start with one simple question: can this number be broken into smaller factors? That's your doorway into the world of primes.</p>
+        </section>
+        <nav class="chapter-nav" aria-label="On this page"><a href="#basics">The basics</a><a href="#why-primes">Why primes?</a><a href="#factorization">Factor trees</a><a href="#euclid">GCD &amp; LCM</a><a href="#proofs">Proof workshop</a><a href="#history">History</a><a href="#prime-directory">Prime directory</a></nav>
+        <section id="basics" class="content-section">
+            <p class="eyebrow">01 / The atoms of arithmetic</p><h2>Some numbers can't<br>be broken down.</h2>
+            <p class="lead">A <strong>divisor</strong> is a positive integer that divides a number without leaving a remainder. Count those divisors, and you can tell what kind of number you're looking at.</p>
+            <div class="reading-grid three">
+                <article class="panel"><div class="big-number">07</div><h3>Prime</h3><p>A positive integer greater than 1 with exactly two positive divisors: <strong>1 and itself</strong>. The divisors of 7 are just 1 and 7.</p></article>
+                <article class="panel"><div class="big-number">12</div><h3>Composite</h3><p>An integer greater than 1 with more than two positive divisors. The divisors of 12 are <strong>1, 2, 3, 4, 6, and 12</strong>.</p></article>
+                <article class="panel"><div class="big-number">01</div><h3>The unit</h3><p>1 has exactly one positive divisor: itself. It is <strong>neither prime nor composite</strong>. Zero and negative integers are not primes in this setting either.</p></article>
+            </div>
+            <div class="callout"><strong>Why “atoms”?</strong> Every integer greater than 1 has a unique prime factorization, apart from the order of the factors. For example, <code>84 = 2 × 2 × 3 × 7</code>. This is the Fundamental Theorem of Arithmetic.</div>
+        </section>
+        <section id="why-primes" class="content-section">
+            <p class="eyebrow">A reason to care / Beginner</p><h2>Why do we need primes<br>in the first place?</h2>
+            <p class="lead">Primes are not a rule someone invented to make arithmetic harder. They emerge when we ask which whole numbers can be assembled by multiplication. Just as letters let us organize words, primes let us organize multiplication—but unlike words, the prime ingredients of a positive integer are unique.</p>
+            <div class="reading-grid">
+                <article class="panel"><h3>Understand rather than memorize</h3><p>Knowing <code>60 = 2² × 3 × 5</code> immediately tells you that 60 is divisible by 12, but not by 7 or 8. You can simplify fractions, compare rhythms, count divisors, and find common factors using the same small collection of building blocks.</p><p>For example, <code>42/60 = (2 × 3 × 7)/(2² × 3 × 5) = 7/10</code>. Canceling matching prime factors explains the shortcut.</p></article>
+                <article class="panel"><h3>Build reliable mathematical worlds</h3><p>Arithmetic modulo a prime lets every nonzero number have a multiplicative inverse. That makes division possible in a finite system, which helps build error-correcting codes and some cryptographic systems.</p><p>Not every prime application uses giant primes, and not every cryptographic algorithm relies on primes. <a class="prose-link" href="applications.html">Follow the actual applications, not the myths.</a></p></article>
+            </div>
+            <details><summary>Deeper note: why not call 1 prime?</summary><p>If 1 were a prime, we could write 6 = 2 × 3 = 1 × 2 × 3 = 1 × 1 × 2 × 3, and so on. To state unique factorization cleanly, multiplication by a unit is separated from multiplication by a prime. The positive integers have one unit, 1; the ordinary integers have units 1 and −1.</p></details>
+        </section>
+        <section id="factorization" class="content-section">
+            <p class="eyebrow">Visual lesson / Beginner → Intermediate</p><h2>Pull a number apart.</h2>
+            <p class="lead">A composite number splits into smaller factors. Keep splitting until the leaves are prime. Different first splits give the same collection of prime leaves: <code>84 = 2 × 42 = 6 × 14 = 4 × 21</code>.</p>
+            <div class="panel interactive-lesson">
+                <form id="factorForm" class="lesson-controls" novalidate><label for="factorNumber">Integer (2–10,000)<input id="factorNumber" name="number" type="number" min="2" max="10000" step="1" value="84"></label><button class="button button-small" type="submit">Build the factor tree ↗</button></form>
+                <p id="factorFormError" class="error-message" role="alert"></p>
+                <div id="factorFormOutput"><svg id="factorSvg" class="lesson-svg factor-svg" role="img" aria-label="Interactive factor tree"></svg><p id="factorSummary" class="lesson-summary" role="status"></p><p id="factorCountRule" class="helper-text"></p></div>
+            </div>
+            <div class="reading-grid lesson-notes">
+                <article class="panel"><h3>Count divisors without listing them</h3><p>If <code>n = p₁<sup>a₁</sup>…pₖ<sup>aₖ</sup></code>, then <code>τ(n) = (a₁ + 1)…(aₖ + 1)</code>. Every divisor chooses how many copies of each prime to include.</p><p>For 84 = 2² × 3 × 7, choose 0, 1, or 2 copies of 2, and 0 or 1 of each other prime: <strong>3 × 2 × 2 = 12 divisors</strong>.</p></article>
+                <article class="panel"><h3>Count the coprime neighbors</h3><p>Euler's totient <code>φ(n)</code> counts integers from 1 through n that share no factor greater than 1 with n. The formula is <code>φ(n) = n ∏<sub>p|n</sub>(1 − 1/p)</code>.</p><p>For 84, remove multiples of 2, 3, and 7, accounting for overlap: <code>φ(84) = 84 × 1/2 × 2/3 × 6/7 = 24</code>. For prime p, φ(p) = p − 1.</p></article>
+            </div>
+            <details><summary>Checkpoint: must two coprime numbers both be prime?</summary><p>No. The composites 8 and 9 share no prime factor, so gcd(8, 9) = 1. “Prime” describes one number; “coprime” describes a relationship between numbers.</p></details>
+        </section>
+        <section id="euclid" class="content-section">
+            <p class="eyebrow">Visual lesson / Everyday arithmetic</p><h2>Find the common rhythm.</h2>
+            <p class="lead">The greatest common divisor (GCD) finds the largest shared building block. The least common multiple (LCM) finds the first shared repeat. If two lights flash every 12 and 18 seconds, they next flash together after 36 seconds: lcm(12, 18).</p>
+            <div class="panel interactive-lesson">
+                <form id="euclidForm" class="lesson-controls" novalidate><label for="euclidA">First positive integer<input id="euclidA" name="first" type="number" min="1" max="10000" value="252"></label><label for="euclidB">Second positive integer<input id="euclidB" name="second" type="number" min="1" max="10000" value="198"></label><button class="button button-small" type="submit">Find the GCD ↗</button></form><p id="euclidFormError" class="error-message" role="alert"></p>
+                <div id="euclidFormOutput"><ol id="euclidSteps" class="euclid-steps"></ol><p id="euclidSummary" class="lesson-summary" role="status"></p></div>
+            </div>
+            <p class="source-note">Each bar shows the remainder as a fraction of the current divisor. The equations are exact; the bars are visual guides.</p>
+            <details><summary>Why does Euclid's algorithm work?</summary><p>If a = qb + r, every common divisor of a and b divides r = a − qb. Conversely, a divisor of b and r divides a = qb + r. So gcd(a, b) = gcd(b, r). The remainders shrink until one is zero. The last nonzero value is the GCD, and <code>lcm(a, b) = ab/gcd(a, b)</code> for positive a and b.</p></details>
+        </section>
+        <section id="proofs" class="content-section">
+            <p class="eyebrow">Proof workshop / Learn how mathematicians know</p><h2>From a pattern<br>to a reason.</h2>
+            <div class="details-list">
+                <details open><summary>Proof 1: why testing up to √n is enough</summary><p>Suppose n is composite, so n = ab with 1 &lt; a ≤ b. If both a and b were greater than √n, their product would exceed n. Therefore a ≤ √n, and a has a prime divisor no larger than itself. To prove 97 prime, it is enough to test 2, 3, 5, and 7—not every number below 97.</p></details>
+                <details><summary>Proof 2: why prime factorization is unique</summary><p>The key is Euclid's lemma: if a prime p divides ab, it divides a or b. If p does not divide a, then gcd(p, a) = 1, so integers x and y exist with xp + ya = 1. Multiply by b to see that p divides b. Apply the lemma to two proposed prime factorizations, match one prime at a time, and cancel. Eventually all prime factors match, including their multiplicities.</p></details>
+                <details><summary>Proof 3: why there are infinitely many primes</summary><p>Suppose p₁, …, pₖ were all the primes. Let N = p₁…pₖ + 1. None of those primes divides N because each leaves remainder 1. But N &gt; 1 has a prime divisor, contradicting the list. N itself does not have to be prime: <code>2 × 3 × 5 × 7 × 11 × 13 + 1 = 30,031 = 59 × 509</code>.</p></details>
+                <details><summary>Proof 4: why primes above 3 look like 6k ± 1</summary><p>Every integer has remainder 0, 1, 2, 3, 4, or 5 modulo 6. Remainders 0, 2, and 4 give even numbers; remainder 3 gives a multiple of 3. A prime above 3 must therefore have remainder 1 or 5. The converse is false: 25 and 35 have those remainders but are composite.</p></details>
+                <details><summary>A useful counterexample: Euler's prime-producing polynomial</summary><p><code>n² + n + 41</code> is prime for n = 0 through 39. At n = 40 it equals <code>41² = 1,681</code>. Forty successful tests do not establish an infinite pattern. More generally, a nonconstant integer polynomial cannot take only positive prime values for all positive integers.</p></details>
+            </div>
+            <p class="source-note">Continue with <a href="https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/pages/lecture-notes/">MIT's Theory of Numbers lecture notes</a>. All explanations here are written for this site.</p>
+        </section>
+        <section id="history" class="content-section">
+            <p class="eyebrow">02 / A very human story</p><h2>Ancient questions.<br>Extraordinary discoveries.</h2>
+            <div class="timeline">
+                <article class="timeline-item"><time>c. 300 BC</time><div><h3>Euclid looks beyond infinity</h3><p>Euclid proves that no finite list can contain every prime. Multiply the primes on a list and add 1: some prime divisor of that new number is missing from the list. The new number need not itself be prime.</p></div></article>
+                <article class="timeline-item"><time>3rd century BC</time><div><h3>Eratosthenes makes a sieve</h3><p>Rather than test each number separately, systematically cross out multiples of primes. A method attributed to Eratosthenes still makes a remarkably good introduction to algorithms today.</p></div></article>
+                <article class="timeline-item"><time datetime="1644">1644</time><div><h3>Mersenne explores powers of two</h3><p>Marin Mersenne studies numbers of the form <code>2<sup>p</sup> − 1</code>. His proposed list of prime-producing exponents contains mistakes, but the numbers now bear his name.</p></div></article>
+                <article class="timeline-item"><time datetime="1732">1732</time><div><h3>Euler breaks a convincing pattern</h3><p>Fermat suspected every number of the form <code>2<sup>2<sup>n</sup></sup> + 1</code> was prime. Euler shows that <code>2<sup>32</sup> + 1 = 641 × 6,700,417</code>. A few successful examples are not a proof.</p></div></article>
+                <article class="timeline-item"><time datetime="1896">1896</time><div><h3>The Prime Number Theorem</h3><p>Hadamard and de la Vallée-Poussin independently prove that the count of primes up to x is asymptotic to <code>x / ln(x)</code>. Around a large x, prime density is roughly <code>1 / ln(x)</code>.</p></div></article>
+                <article class="timeline-item"><time datetime="1996">1996</time><div><h3>A global search begins</h3><p>George Woltman starts the Great Internet Mersenne Prime Search: GIMPS. Volunteers contribute computing power to a search far bigger than any one computer.</p></div></article>
+                <article class="timeline-item"><time datetime="2024-10-12">October 12, 2024</time><div><h3>41 million digits. One new prime.</h3><p>Luke Durant's GIMPS search confirms <code>2<sup>136,279,841</sup> − 1</code>, with 41,024,320 decimal digits. His network uses thousands of server GPUs spanning 24 datacenter regions in 17 countries.</p></div></article>
+                <article class="timeline-item"><time datetime="2026-10-07">October 7, 2026</time><div><h3>The search continues</h3><p>The 2024 discovery remains the largest known prime in the PrimePages list checked on this date. There are infinitely many primes, but only finitely many that we have identified.</p></div></article>
+            </div>
+            <p class="source-note">Read more: <a href="https://mathshistory.st-andrews.ac.uk/HistTopics/Prime_numbers/">MacTutor's history of prime numbers</a> · <a href="https://www.mersenne.org/primes/press/M136279841.html">GIMPS discovery report</a> · <a href="https://t5k.org/primes/lists/all.txt">PrimePages records</a>.</p>
+        </section>
+        <section id="prime-directory" class="content-section">
+            <p class="eyebrow">03 / Get to know the neighbors</p><h2>1,000 integers.<br><span class="text-lime">168 primes.</span></h2>
+            <p class="lead">Explore every prime from 1 to 1,000, grouped into blocks of 100. Open a range to see its numbers. The list is generated by the same sieve principle you can try in the lab.</p>
+            <div id="primeDirectory" class="details-list"></div>
+            <noscript><p class="callout">Enable JavaScript to generate the prime directory, or visit <a class="prose-link" href="https://t5k.org/lists/small/1000.txt">PrimePages' list of the first 1,000 primes</a> (a longer list, extending beyond 1,000).</p></noscript>
+            <div class="callout"><strong>A small surprise:</strong> the block from 91 to 100 has just one prime: 97. Primes are predictable in their overall density, but not evenly spaced.</div>
+        </section>
+        <noscript><p class="callout">Enable JavaScript for the factor tree, GCD steps, and generated prime directory. The explanations and worked examples remain readable without it.</p></noscript>
+        <div class="next-chapter"><a class="text-link" href="playground.html">Try the sieve before moving on ↗</a><a class="button" href="explore.html">Level 02: Patterns &amp; discovery →</a></div>
+    </main>
+    <footer class="site-footer container"><a class="brand" href="index.html">indivisible.</a><p>Made for curious minds. Not just mathematicians.</p><a href="resources.html">Sources &amp; glossary ↗</a></footer>
+</body>
+</html>

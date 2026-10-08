@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { MAX_INTEGER, parseInteger, sieve, getDivisors, isPrime, getPrimeNeighbors, classify } = require('../math.js');
+const { MAX_INTEGER, parseInteger, sieve, getDivisors, isPrime, getPrimeNeighbors, classify } = require('../docs/scripts/math.js');
 
 function bruteDivisors(value) {
     const result = [];

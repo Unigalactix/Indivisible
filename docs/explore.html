@@ -4,13 +4,13 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Level 2: discover the largest primes, compare Eratosthenes, Miller-Rabin and AKS, and explore prime gaps and twin primes.">
     <meta name="theme-color" content="#080909"><title>Patterns &amp; Discovery — Indivisible</title>
-    <link rel="icon" type="image/svg+xml" href="prism.svg"><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+    <link rel="icon" type="image/svg+xml" href="assets/images/prism.svg"><link rel="stylesheet" href="assets/css/styles.css"><script src="scripts/app.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <a class="brand" href="index.html" aria-label="Indivisible home"><span class="brand-mark" aria-hidden="true">ıı</span> indivisible<span class="brand-dot">.</span></a>
-        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html">Foundations</a><a href="explore.html" aria-current="page">Explore</a><a href="advanced.html">Deep math</a><a href="resources.html">Resources</a></nav>
+        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html">Foundations</a><a href="explore.html" aria-current="page">Explore</a><a href="advanced.html">Deep math</a><a href="applications.html">Applications</a><a href="visuals.html">Visual atlas</a><a href="research.html">Research</a><a href="resources.html">Resources</a></nav>
         <a class="button button-small" href="playground.html">Enter the lab ↗</a>
     </header>
     <main id="main" class="container">
@@ -18,7 +18,7 @@
             <div class="breadcrumbs"><a href="index.html">Overview</a><span>/</span><a href="foundations.html">Level 01</a><span>/</span><span>Level 02</span></div>
             <span class="pill">LEVEL 02 · INTERMEDIATE</span><h1>Order in the<br><span class="text-lime">unexpected.</span></h1><p>Now that you know what a prime is, let's find them. Discover the methods, the records, and the curious spaces in between.</p>
         </section>
-        <nav class="chapter-nav" aria-label="On this page"><a href="#largest">01 / Record holders</a><a href="#algorithms">02 / The algorithms</a><a href="#gaps">03 / Prime gaps</a></nav>
+        <nav class="chapter-nav" aria-label="On this page"><a href="#largest">Record holders</a><a href="#algorithms">Algorithms</a><a href="#families">Prime families</a><a href="#gaps">Prime gaps</a><a href="#toolkit">Computational toolkit</a></nav>
         <section id="largest" class="content-section">
             <p class="eyebrow">01 / Numbers at an extraordinary scale</p><h2>The largest known primes.</h2>
             <p class="lead">The current top five are all <strong>Mersenne primes</strong>: one less than a power of two. Their special form makes efficient primality proofs possible with the Lucas-Lehmer test.</p>
@@ -63,6 +63,23 @@
             </article>
             <noscript><p class="callout">Enable JavaScript to switch algorithm tabs. Definitions and source references are also available in the <a class="prose-link" href="resources.html">glossary</a>.</p></noscript>
         </section>
+        <section id="families" class="content-section">
+            <p class="eyebrow">A field guide / Intermediate</p><h2>One definition.<br>Many fascinating families.</h2>
+            <p class="lead">A special name usually adds an extra condition to “prime.” It does not guarantee an easy way to generate infinitely many members. Several innocent-looking families still conceal open problems.</p>
+            <div class="table-scroll" role="region" tabindex="0" aria-label="Families of primes and their known status"><table><thead><tr><th scope="col">Family</th><th scope="col">Rule &amp; examples</th><th scope="col">What is known?</th></tr></thead><tbody>
+                <tr><td>Mersenne</td><td>2<sup>p</sup> − 1: 3, 7, 31, 127</td><td>Infinitely many? Unknown.</td></tr>
+                <tr><td>Fermat prime</td><td>2<sup>2<sup>n</sup></sup> + 1: 3, 5, 17, 257, 65,537</td><td>No other examples are known.</td></tr>
+                <tr><td>Sophie Germain</td><td>p and 2p + 1 prime: p = 2, 3, 5, 11</td><td>Infinitely many? Unknown.</td></tr>
+                <tr><td>Safe prime</td><td>q = 2p + 1 with p prime: 5, 7, 11, 23</td><td>Useful for some group-based protocols.</td></tr>
+                <tr><td>Twin primes</td><td>(p, p + 2): (3, 5), (11, 13)</td><td>Infinitely many? Unknown.</td></tr>
+                <tr><td>Palindromic prime</td><td>Same digits backward: 11, 101, 131</td><td>Depends on the number base.</td></tr>
+                <tr><td>Gaussian prime</td><td>Prime element in the integers a + bi</td><td>Different from ordinary integer primes.</td></tr>
+            </tbody></table></div>
+            <div class="reading-grid lesson-notes">
+                <article class="panel"><h3>Perfect numbers and Mersenne primes</h3><p>A perfect number equals the sum of its positive proper divisors: <code>6 = 1 + 2 + 3</code> and <code>28 = 1 + 2 + 4 + 7 + 14</code>.</p><p>Euclid and Euler together characterize every <strong>even</strong> perfect number: <code>2<sup>p−1</sup>(2<sup>p</sup> − 1)</code>, where the Mersenne factor is prime. Whether any odd perfect number exists remains unknown.</p></article>
+                <article class="panel"><h3>A base-dependent pattern</h3><p>Every even-length decimal palindrome is divisible by 11: its alternating digit sum is zero. Therefore the only even-length palindromic prime in base 10 is 11.</p><p>Primality itself is independent of notation. A number stays prime when written in binary; only the appearance of its digits changes.</p></article>
+            </div>
+        </section>
         <section id="gaps" class="content-section">
             <p class="eyebrow">03 / The spaces in between</p><h2>Close neighbors.<br>Vast distances.</h2>
             <p class="lead">A prime gap is the difference between consecutive primes. The primes are not random, but their local spacing is irregular. Near a large x, the average spacing is approximately ln(x).</p>
@@ -75,6 +92,21 @@
                 <article class="panel"><h3>A hundred numbers. One prime.</h3><p>370,261 and 370,373 are consecutive primes. Their gap is <strong>112</strong>, containing <strong>111 composite integers</strong> strictly between them.</p><ul><li><strong>370,261–370,360:</strong> 100 integers, one prime (370,261).</li><li><strong>370,262–370,361:</strong> 100 integers, zero primes.</li></ul><p>These are sliding windows, not blocks aligned to multiples of 100. In the smaller window 91–100, only 97 is prime.</p></article>
                 <article class="panel"><h3>And yet, primes stay close.</h3><p>The <strong>Twin Prime Conjecture</strong> says there are infinitely many prime pairs exactly 2 apart, such as 11 and 13. It remains unproved.</p><ul><li><strong>2013:</strong> Yitang Zhang proves infinitely many pairs have gaps at most 70 million.</li><li><strong>2013–2014:</strong> Maynard and Tao develop stronger methods; the Polymath collaboration lowers the unconditional bound to <strong>246</strong>.</li></ul><p>A finite bound is a breakthrough. It is not yet a proof of the bound 2.</p></article>
             </div>
+        </section>
+        <section id="toolkit" class="content-section">
+            <p class="eyebrow">Choosing the right tool / Intermediate → Advanced</p><h2>Testing, factoring, counting:<br>three different jobs.</h2>
+            <div class="reading-grid three">
+                <article class="panel"><h3>Primality testing</h3><p>Answer a yes/no question about one integer. A proof may come from trial division, a primality certificate, ECPP, or a specialized theorem such as Lucas-Lehmer. Miller-Rabin is often an efficient filter before a more definitive step.</p></article>
+                <article class="panel"><h3>Integer factorization</h3><p>Find the prime ingredients of a composite. Pollard rho can find small factors; elliptic-curve factorization depends strongly on factor size; the number field sieve handles large general inputs. Knowing “composite” need not tell you a factor.</p></article>
+                <article class="panel"><h3>Prime counting</h3><p>Compute π(x), the number of primes at most x. Segmented sieves process manageable blocks; combinatorial counting algorithms can avoid listing every prime explicitly. A count is not a list of every prime.</p></article>
+            </div>
+            <div class="details-list">
+                <details><summary>How does a segmented sieve save memory?</summary><p>First sieve the primes up to √N. Then process one interval [L, R] at a time, crossing out multiples of those base primes. Begin each prime's work at the larger of p² and the first multiple of p in the interval. You keep only one block in memory, rather than a flag for every integer up to N.</p></details>
+                <details><summary>Why use BigInt for modular powers?</summary><p>Ordinary JavaScript numbers represent integers exactly only up to 2<sup>53</sup> − 1. Even when n fits, multiplying two residues below n can exceed that range. BigInt keeps modular multiplication exact. Repeated squaring evaluates a<sup>e</sup> mod n with a number of squarings proportional to the bit length of e, not e itself.</p></details>
+                <details><summary>What counts as a primality certificate?</summary><p>A certificate packages evidence that a separate verifier can check. The expensive search for a proof may be much harder than verification. Pocklington-style criteria and elliptic-curve primality proving are examples; do not confuse a repeatable probable-prime test with a full certificate.</p></details>
+                <details><summary>How does Lucas-Lehmer test Mersenne candidates?</summary><p>For odd prime p, set M = 2<sup>p</sup> − 1 and s = 4. Apply <code>s ← s² − 2 (mod M)</code> exactly p − 2 times. M is prime exactly when the final residue is zero. The case p = 2 is handled separately. Efficient arithmetic exploiting M's special form makes this useful for record searches.</p></details>
+            </div>
+            <div class="callout">See actual counts and gaps in the <a class="prose-link" href="visuals.html">visual atlas</a>, then compare computational discovery with new theorems on the <a class="prose-link" href="research.html">research desk</a>.</div>
         </section>
         <div class="next-chapter"><a class="text-link" href="foundations.html">← Back to the foundations</a><a class="button" href="advanced.html">Level 03: Beyond the obvious →</a></div>
     </main>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An A–Z glossary of prime-number concepts and authoritative sources for further learning.">
+    <meta name="theme-color" content="#080909"><title>The Reference Desk — Indivisible</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/prism.svg"><link rel="stylesheet" href="assets/css/styles.css"><script src="scripts/app.js" defer></script><script src="scripts/lessons.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Indivisible home"><span class="brand-mark" aria-hidden="true">ıı</span> indivisible<span class="brand-dot">.</span></a>
+        <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="foundations.html">Foundations</a><a href="explore.html">Explore</a><a href="advanced.html">Deep math</a><a href="applications.html">Applications</a><a href="visuals.html">Visual atlas</a><a href="research.html">Research</a><a href="resources.html" aria-current="page">Resources</a></nav>
+        <a class="button button-small" href="playground.html">Enter the lab ↗</a>
+    </header>
+    <main id="main" class="container">
+        <section class="page-hero">
+            <div class="breadcrumbs"><a href="index.html">Overview</a><span>/</span><span>Resources</span></div>
+            <span class="pill">THE REFERENCE DESK</span><h1>A little clarity.<br>A lot of <span class="text-lime">possibility.</span></h1><p>A quick guide to the language of primes, and trusted places to continue your journey.</p>
+        </section>
+        <nav class="chapter-nav" aria-label="On this page"><a href="#topic-map">Topic map</a><a href="#glossary">A–Z glossary</a><a href="#study-paths">Study paths</a><a href="#sources">Primary sources</a></nav>
+        <section id="topic-map" class="content-section">
+            <p class="eyebrow">Find a question, not just a page</p><h2>Your map of<br>the prime universe.</h2>
+            <label class="input-label" for="topicSearch">Find a topic or experiment</label><input class="catalog-search" type="search" id="topicSearch" placeholder="Try: cryptography, proof, zeta, factor…" data-filter-target="topicCards" data-filter-count="topicMatches" aria-controls="topicCards"><p id="topicMatches" class="helper-text" role="status">Browse the topic cards, or type to filter.</p>
+            <div id="topicCards" class="topic-grid">
+                <a class="topic-card" href="foundations.html#basics"><strong>What is a prime?</strong><span>Beginner · Divisors, composites, and the unit 1.</span></a>
+                <a class="topic-card" href="foundations.html#why-primes"><strong>Why primes matter</strong><span>Beginner · Arithmetic building blocks and purpose.</span></a>
+                <a class="topic-card" href="foundations.html#factorization"><strong>Factor trees &amp; totients</strong><span>Interactive · Unique factorization and divisor counts.</span></a>
+                <a class="topic-card" href="foundations.html#euclid"><strong>GCD, LCM &amp; Euclid</strong><span>Interactive · Coprimality, fractions, repeated cycles.</span></a>
+                <a class="topic-card" href="foundations.html#proofs"><strong>Proof workshop</strong><span>Beginner → Intermediate · Square roots, Euclid's lemma, infinite primes.</span></a>
+                <a class="topic-card" href="foundations.html#history"><strong>History of prime numbers</strong><span>Ancient sieves to distributed GPU discoveries.</span></a>
+                <a class="topic-card" href="explore.html#algorithms"><strong>Primality algorithms</strong><span>Sieve, Miller-Rabin, AKS, probability versus proof.</span></a>
+                <a class="topic-card" href="explore.html#toolkit"><strong>Computational toolkit</strong><span>Segmented sieves, factoring, certificates, Lucas-Lehmer.</span></a>
+                <a class="topic-card" href="explore.html#families"><strong>Special prime families</strong><span>Mersenne, Fermat, Sophie Germain, safe, palindromic.</span></a>
+                <a class="topic-card" href="explore.html#gaps"><strong>Prime gaps &amp; twin primes</strong><span>Bounds, arbitrarily long gaps, and computational records.</span></a>
+                <a class="topic-card" href="visuals.html#density"><strong>The Prime Number Theorem</strong><span>Interactive · Exact counts versus x / ln(x).</span></a>
+                <a class="topic-card" href="visuals.html#spiral"><strong>Ulam spiral</strong><span>Interactive · Geometric patterns and quadratic sequences.</span></a>
+                <a class="topic-card" href="visuals.html#goldbach"><strong>Goldbach conjecture</strong><span>Interactive · Additive primes, evidence versus proof.</span></a>
+                <a class="topic-card" href="advanced.html#clock-lab"><strong>Modular arithmetic &amp; finite fields</strong><span>Interactive · Clocks, inverse pairs, Fermat, Carmichael numbers.</span></a>
+                <a class="topic-card" href="advanced.html#zeta-lab"><strong>Zeta &amp; Euler's product</strong><span>Interactive · Sum, product, convergence, and harmonics.</span></a>
+                <a class="topic-card" href="advanced.html#progressions"><strong>Primes in arithmetic progressions</strong><span>Interactive · Dirichlet's theorem, residues, Green–Tao.</span></a>
+                <a class="topic-card" href="advanced.html#beyond-integers"><strong>Beyond the integers</strong><span>Advanced · p-adics, Gaussian integers, prime ideals, L-functions.</span></a>
+                <a class="topic-card" href="applications.html#rsa"><strong>Cryptography: inside RSA</strong><span>Interactive · A teaching-only encryption and decryption round trip.</span></a>
+                <a class="topic-card" href="applications.html#fields"><strong>QR codes &amp; elliptic curves</strong><span>Finite fields, Reed–Solomon codes, secret sharing.</span></a>
+                <a class="topic-card" href="applications.html#computing"><strong>Primes in computing</strong><span>Hashing, number-theoretic transforms, Chinese remainders.</span></a>
+                <a class="topic-card" href="applications.html#quantum"><strong>The post-quantum transition</strong><span>Shor's algorithm, NIST standards, and limitations.</span></a>
+                <a class="topic-card" href="research.html#recent"><strong>Research updates 2024–2026</strong><span>Guth–Maynard, Gafni–Tao, GIMPS, and PrimeGrid.</span></a>
+                <a class="topic-card" href="research.html#reading-papers"><strong>How to read research claims</strong><span>Proof, preprint, computation, heuristic, and open problem.</span></a>
+                <a class="topic-card" href="playground.html#analyzer"><strong>Exact prime analyzer</strong><span>All divisors, nearest primes, and gaps up to 100 trillion.</span></a>
+            </div>
+        </section>
+        <section id="glossary" class="content-section">
+            <p class="eyebrow">01 / Ideas, decoded</p><h2>The A–Z glossary.</h2>
+            <label class="input-label" for="glossarySearch">Filter terms and definitions</label><input class="catalog-search" type="search" id="glossarySearch" placeholder="Search the glossary…" data-filter-target="glossaryTerms" data-filter-count="glossaryMatches" aria-controls="glossaryTerms"><p id="glossaryMatches" class="helper-text" role="status">Type to narrow the glossary.</p>
+            <dl class="glossary" id="glossaryTerms">
+                <div><dt>AKS</dt><dd>The Agrawal–Kayal–Saxena test: an unconditional, deterministic algorithm that decides primality in time polynomial in the number of input digits.</dd></div>
+                <div><dt>Arithmetic progression</dt><dd>A sequence with a constant difference between successive terms. Dirichlet's and Green–Tao's theorems describe different ways primes occur in these sequences.</dd></div>
+                <div><dt>Asymptotic</dt><dd>Describes a limiting relationship as a parameter grows. f(x) ∼ g(x) means their ratio approaches 1, not that their difference approaches zero.</dd></div>
+                <div><dt>Carmichael number</dt><dd>A composite n satisfying a<sup>n−1</sup> ≡ 1 (mod n) for every integer a coprime to n. The smallest example is 561.</dd></div>
+                <div><dt>Composite</dt><dd>An integer greater than 1 with more than two positive divisors. For example, 12 = 3 × 4.</dd></div>
+                <div><dt>Coprime</dt><dd>Two integers whose greatest common divisor is 1. They need not individually be prime.</dd></div>
+                <div><dt>Divisor</dt><dd>An integer that divides another with no remainder. Our analyzer lists positive divisors, including 1 and the input itself.</dd></div>
+                <div><dt>Fermat's Little Theorem</dt><dd>For a prime p and any integer a, a<sup>p</sup> ≡ a (mod p). Do not confuse this with Fermat's Last Theorem.</dd></div>
+                <div><dt>Fermat number</dt><dd>A number of the form 2<sup>2<sup>n</sup></sup> + 1 for a nonnegative integer n. The first five are prime, but not all are.</dd></div>
+                <div><dt>Finite field</dt><dd>A finite arithmetic system with addition, subtraction, multiplication, and division by nonzero elements. Its size is always a prime power.</dd></div>
+                <div><dt>Fundamental Theorem of Arithmetic</dt><dd>Every integer greater than 1 is a product of primes in exactly one way, apart from the order of the factors.</dd></div>
+                <div><dt>GIMPS</dt><dd>The Great Internet Mersenne Prime Search: a distributed computing project founded in 1996 to find Mersenne primes.</dd></div>
+                <div><dt>Goldbach conjecture</dt><dd>The strong form says every even integer at least 4 is the sum of two primes. It is unproved; the related odd three-prime statement is a theorem.</dd></div>
+                <div><dt>Greatest common divisor</dt><dd>The largest positive integer dividing both inputs, often calculated efficiently with Euclid's algorithm.</dd></div>
+                <div><dt>L-function</dt><dd>An analytic object encoding arithmetic information, often through a series and Euler product. Zeta and Dirichlet L-functions are examples.</dd></div>
+                <div><dt>Lucas-Lehmer test</dt><dd>A deterministic test for Mersenne numbers with prime exponents. For odd prime p, iterate s → s² − 2 starting at 4, modulo 2<sup>p</sup> − 1; a zero after p − 2 iterations proves primality.</dd></div>
+                <div><dt>Mersenne prime</dt><dd>A prime of the form 2<sup>p</sup> − 1. Examples include 3, 7, 31, and 127. A prime exponent is necessary but not sufficient.</dd></div>
+                <div><dt>Miller-Rabin</dt><dd>A primality test using modular exponentiation. Failed rounds prove compositeness; passing random rounds generally establishes probable primality, not a proof.</dd></div>
+                <div><dt>Modular arithmetic</dt><dd>Arithmetic with remainders. Writing a ≡ b (mod m) means a and b have the same remainder when divided by m.</dd></div>
+                <div><dt>Multiplicative inverse</dt><dd>A value b with ab ≡ 1 (mod m). It exists exactly when gcd(a, m) = 1.</dd></div>
+                <div><dt>p-adic number</dt><dd>A number in a completion based on divisibility by powers of a fixed prime p, rather than ordinary real absolute distance.</dd></div>
+                <div><dt>Perfect number</dt><dd>A positive integer equal to the sum of its positive proper divisors. Every even perfect number corresponds to a Mersenne prime.</dd></div>
+                <div><dt>Prime</dt><dd>A positive integer greater than 1 with exactly two positive divisors: 1 and itself.</dd></div>
+                <div><dt>Prime gap</dt><dd>The difference between consecutive primes. A gap of g has g − 1 integers strictly between its endpoints.</dd></div>
+                <div><dt>Prime Number Theorem</dt><dd>The number of primes at most x is asymptotic to x / ln(x): the ratio approaches 1 as x grows without bound.</dd></div>
+                <div><dt>Probable prime</dt><dd>An integer passing a specified test that every prime in the test's domain passes, but that some composites can also pass.</dd></div>
+                <div><dt>Pseudoprime</dt><dd>A composite that passes a particular probable-prime test. Always specify the test or base; being an impostor in one test does not mean passing them all.</dd></div>
+                <div><dt>Riemann Hypothesis</dt><dd>The unproved statement that every nontrivial zero of the Riemann zeta function has real part 1/2.</dd></div>
+                <div><dt>Safe prime</dt><dd>A prime q for which (q − 1)/2 is also prime. Not the same as a guarantee that any use of q is cryptographically safe.</dd></div>
+                <div><dt>Sieve of Eratosthenes</dt><dd>An algorithm that lists primes up to a limit by crossing out multiples of primes starting from their squares.</dd></div>
+                <div><dt>Sophie Germain prime</dt><dd>A prime p for which 2p + 1 is also prime.</dd></div>
+                <div><dt>Totient</dt><dd>Euler's φ(n), the count of integers from 1 through n coprime to n. If p is prime, φ(p) = p − 1.</dd></div>
+                <div><dt>Twin primes</dt><dd>Two primes differing by exactly 2, such as 17 and 19. Whether there are infinitely many pairs is still unknown.</dd></div>
+                <div><dt>Ulam spiral</dt><dd>An arrangement of integers on an outward square spiral, often with primes highlighted to expose visual patterns.</dd></div>
+                <div><dt>Unit</dt><dd>In the positive integers, 1. It is the multiplicative identity and is neither prime nor composite.</dd></div>
+                <div><dt>Zeta function</dt><dd>For real s &gt; 1, ζ(s) = ∑ n<sup>−s</sup>. Its extension to complex inputs and its zeros reveal deep information about the distribution of primes.</dd></div>
+            </dl>
+        </section>
+        <section id="study-paths" class="content-section"><p class="eyebrow">Choose your depth</p><h2>Three routes<br>through the material.</h2><div class="reading-grid three"><article class="panel"><h3>New to primes</h3><ol><li>Definitions, divisors, and why 1 is special.</li><li>Factor trees and Euclid's algorithm.</li><li>The animated sieve and exact analyzer.</li><li>Prime-count and Goldbach experiments.</li><li>Applications and common misconceptions.</li></ol><a class="text-link" href="foundations.html">Start with the foundations ↗</a></article><article class="panel"><h3>Ready for proofs</h3><ol><li>Unique factorization and Euclid's lemma.</li><li>Modular inverses, Fermat, and Euler.</li><li>Algorithms and certificates.</li><li>Residue classes and Dirichlet's theorem.</li><li>Zeta's convergent Euler product.</li></ol><a class="text-link" href="advanced.html">Open the advanced guide ↗</a></article><article class="panel"><h3>Research curious</h3><ol><li>Prime-counting asymptotics.</li><li>Complex analysis and zeta zeros.</li><li>Zero density and short intervals.</li><li>Additive number theory and prime patterns.</li><li>Original papers with exact hypotheses.</li></ol><a class="text-link" href="research.html">Read the research desk ↗</a></article></div></section>
+        <section id="sources" class="content-section">
+            <p class="eyebrow">02 / Follow your curiosity</p><h2>Go to the source.</h2>
+            <ul class="source-list">
+                <li><a href="https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/pages/lecture-notes/">MIT OpenCourseWare · Theory of Numbers ↗</a><p>A structured route through divisibility, congruences, residues, and deeper number theory.</p></li>
+                <li><a href="https://annals.math.princeton.edu/2026/203-2/p06">Guth &amp; Maynard · New large value estimates for Dirichlet polynomials ↗</a><p>2026 journal publication; the <a href="https://arxiv.org/abs/2405.20552">author preprint</a> supplies version history and theorem details.</p></li>
+                <li><a href="https://msp.org/ent/2026/5-2/p01.xhtml">Gafni &amp; Tao · Exceptional short intervals ↗</a><p>Published May 12, 2026. Explicit links between zero-density estimates and exceptional-set bounds.</p></li>
+                <li><a href="https://sweet.ua.pt/tos/bib/4.12.html">Oliveira e Silva, Herzog &amp; Pardi · Goldbach verification ↗</a><p>Published finite verification through 4 × 10<sup>18</sup>, not a proof for all even integers.</p></li>
+                <li><a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE · How QR-code error correction works ↗</a><p>The role of Reed–Solomon codes and the limits of restoration percentages.</p></li>
+                <li><a href="https://csrc.nist.gov/pubs/sp/800/186/final">NIST SP 800-186 · Elliptic-curve parameters ↗</a><p>Authoritative parameter guidance, distinct from this site's teaching demonstrations.</p></li>
+                <li><a href="https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards">NIST · First three finalized post-quantum standards ↗</a><p>The August 2024 standardization milestone and its purpose.</p></li>
+                <li><a href="https://www.mersenne.org/primes/press/M136279841.html">GIMPS · The 2024 prime discovery ↗</a><p>The discovery date, decimal digit count, GPU network, and independent verification of 2<sup>136,279,841</sup> − 1.</p></li>
+                <li><a href="https://t5k.org/primes/lists/all.txt">PrimePages · The largest known primes ↗</a><p>The current record list. Our record-holder snapshot was checked on October 7, 2026.</p></li>
+                <li><a href="https://mathshistory.st-andrews.ac.uk/HistTopics/Prime_numbers/">University of St Andrews · A history of primes ↗</a><p>MacTutor's history, from ancient mathematics through modern number theory.</p></li>
+                <li><a href="https://en.wikipedia.org/wiki/Prime_gap#Numerical_results">Prime gaps · Numerical results and references ↗</a><p>Proven and probable-prime endpoint records, plus references to the original record tables.</p></li>
+                <li><a href="https://www.claymath.org/millennium/riemann-hypothesis/">Clay Mathematics Institute · Riemann Hypothesis ↗</a><p>The precise statement and significance of this Millennium Prize Problem.</p></li>
+                <li><a href="https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf">Agrawal, Kayal &amp; Saxena · PRIMES is in P ↗</a><p>The original AKS paper, for readers ready for the formal mathematics.</p></li>
+                <li><a href="https://terrytao.wordpress.com/2014/04/14/polymath8b-bounded-intervals-with-many-primes-after-maynard/">Terence Tao · Bounded intervals with many primes ↗</a><p>A research-level account of Polymath8b and improvements to bounded prime gaps.</p></li>
+            </ul>
+            <p class="source-note">This is an educational, static website. Mathematical records may change after the dates shown. The analyzer's nearest-prime search uses exact BigInt modular arithmetic and Miller-Rabin bases 2, 3, 5, 7, 11, 13, and 17, deterministic below 341,550,071,728,321. Its search stays below 200 trillion, including the next prime above the input limit. A prime input is excluded from its own neighbors; its surrounding span combines two gaps. No calculator input is sent to a server. The interface loads Google Fonts; if unavailable, system fonts are used.</p>
+        </section>
+        <div class="next-chapter"><a class="text-link" href="index.html#levels">← Choose your next level</a><a class="button" href="playground.html">Make a discovery of your own ↗</a></div>
+    </main>
+    <footer class="site-footer container"><a class="brand" href="index.html">indivisible.</a><p>Made for curious minds. Not just mathematicians.</p><a href="#sources">Back to sources ↑</a></footer>
+</body>
+</html>
